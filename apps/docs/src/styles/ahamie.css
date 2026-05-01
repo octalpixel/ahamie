@@ -1,18 +1,80 @@
-/* Warm Ahamie palette — matches the chibi mascot. */
+/* Ahamie theme — warm cream + coral, matching the chibi mascot.
+ *
+ * Starlight convention:
+ *   :root                      → DARK mode defaults
+ *   :root[data-theme="light"]  → LIGHT mode overrides
+ *
+ * We override the full grayscale + accent ramp in BOTH modes so contrast,
+ * heading weight, and link color stay calibrated. Previously only :root was
+ * partially overridden, which left light-mode unreadable.
+ */
+
 :root {
-  --sl-color-accent-low: #fff4e6;
-  --sl-color-accent: #e58a3a;
-  --sl-color-accent-high: #b95f1a;
-  --sl-color-white: #fffaf2;
-  --sl-color-gray-1: #f6e7d2;
-  --sl-color-gray-2: #ddc7a3;
+  /* Typography */
   --sl-font: ui-rounded, "SF Pro Rounded", "Segoe UI Variable", "Inter", system-ui, sans-serif;
   --sl-font-mono: ui-monospace, "JetBrains Mono", "SF Mono", monospace;
-}
 
-[data-theme="dark"] {
+  /* DARK MODE — warm dark roast: deep brown bg, cream text, coral accent */
+  --sl-color-accent-low: #3a1d08;
+  --sl-color-accent: #f2a867;
+  --sl-color-accent-high: #ffd7a8;
+
+  --sl-color-white: #fffaf2;       /* highest-contrast text */
+  --sl-color-gray-1: #f6e7d2;
+  --sl-color-gray-2: #ddc7a3;
+  --sl-color-gray-3: #a88b6b;
+  --sl-color-gray-4: #6b5337;
+  --sl-color-gray-5: #3d2c1a;
+  --sl-color-gray-6: #2a1d10;
+  --sl-color-black: #1a120a;       /* deepest bg */
+
   --sl-color-bg: #1a120a;
   --sl-color-bg-nav: #221708;
   --sl-color-bg-sidebar: #1a120a;
+  --sl-color-bg-inline-code: #2a1d10;
   --sl-color-text: #f6e7d2;
+  --sl-color-text-accent: #ffd7a8;
+  --sl-color-hairline: #3d2c1a;
+  --sl-color-hairline-light: #2a1d10;
+  --sl-color-hairline-shade: #2a1d10;
+}
+
+:root[data-theme="light"] {
+  /* LIGHT MODE — warm cream paper: cream bg, deep brown text, coral accent */
+  --sl-color-accent-low: #fff4e6;
+  --sl-color-accent: #d86c2d;       /* darker coral so it pops on cream */
+  --sl-color-accent-high: #8b3f0e;
+
+  --sl-color-white: #1a120a;        /* highest-contrast text (deep brown) */
+  --sl-color-gray-1: #2a1d10;
+  --sl-color-gray-2: #3d2c1a;
+  --sl-color-gray-3: #6b5337;
+  --sl-color-gray-4: #a88b6b;
+  --sl-color-gray-5: #c9b08a;
+  --sl-color-gray-6: #ddc7a3;
+  --sl-color-gray-7: #f0dfc1;
+  --sl-color-black: #fffaf2;        /* "black" → swap with bg */
+
+  --sl-color-bg: #fffaf2;
+  --sl-color-bg-nav: #fff4e6;
+  --sl-color-bg-sidebar: #fff8eb;
+  --sl-color-bg-inline-code: #f6e7d2;
+  --sl-color-text: #2a1d10;
+  --sl-color-text-accent: #b95f1a;
+  --sl-color-hairline: #ddc7a3;
+  --sl-color-hairline-light: #f0dfc1;
+  --sl-color-hairline-shade: #ddc7a3;
+}
+
+/* A few targeted readability touches that apply to both modes. */
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sl-markdown-content code:not(pre > code) {
+  padding: 0.1em 0.35em;
+  border-radius: 0.25em;
 }
